@@ -1,0 +1,15 @@
+#!/bin/bash
+# @Function
+# To convert into Absolute Path.
+#
+# @author Ronak Dhoot (rdhoot at live dot com)
+
+[ $# -eq 0 ] && files=(.) || files=("$@")
+
+for f in "${files[@]}" ; do
+    ! [ -e "$f" ] && {
+        echo "$f does not exists!"
+        continue
+    }
+    readlink -f "$f"
+done
